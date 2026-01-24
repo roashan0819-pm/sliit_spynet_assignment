@@ -47,16 +47,16 @@ void display_map(char **grid, int n)  {
         printf("controls : W(up) ,A(left), S(Down), D(right), Q(quit)\n\n");
 	for (int i = 0; i < n; i++) {
 	for (int j = 0; j < n; j++) {	
-        printf("%c", grid[i][j]);
+        printf("%c ", grid[i][j]);   //adding space after the %c bcz printing grid nice shape
 	}
         printf("\n");
 }
 }
 
 void free_map(char **grid, int size) {
-    for (int i = 0; i < size; i++) 
-        free(grid);
-    
+    for (int i = 0; i < size; i++) {
+        free(grid[i]);
+    }
     free(grid);
 }
 
@@ -98,23 +98,23 @@ int main() {
         }
 
                                                  // Calculate new position
-        if (input == 'w' || input == 'W') p1.x--;
-        else if (input == 's' || input == 'S') p1.x++;
-        else if (input == 'a' || input == 'A') p1.y--;
-        else if (input == 'd' || input == 'D') p1.y++;
+     if (input == 'w' || input == 'W') p1.x--;
+     else if (input == 's' || input == 'S') p1.x++;
+     else if (input == 'a' || input == 'A') p1.y--;
+     else if (input == 'd' || input == 'D') p1.y++;
 
         
-        if (p1.x < 0 || p1.x >= n || p1.y < 0 || p1.y >= n) {
-            printf("\nOut of bounds! Move rejected.\n");
-            p1.x = old_x;        
+     if (p1.x < 0 || p1.x >= n || p1.y < 0 || p1.y >= n) {
+         printf("\nOut of bounds! Move rejected.\n");
+         p1.x = old_x;        
             p1.y = old_y;
-        } else {
+ } else {
                                   // Update grid
             grid[old_x][old_y] = '.'; 
             grid[p1.x][p1.y] = p1.symbol;
-        }  
+          }  
     	
-    }
+         }
 
 
 
