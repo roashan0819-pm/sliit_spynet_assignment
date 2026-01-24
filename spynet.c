@@ -8,6 +8,8 @@
 typedef struct
 {
 	int x ,y;
+	int health;
+	int intel;
 	char symbol;
 } 
         player;
@@ -42,9 +44,10 @@ void initialize_map(char **grid, int n)
     }
 }
 
-void display_map(char **grid, int n)  {
-	system("clear");            //clear the linux terminal for the nice look
-        printf("controls : W(up) ,A(left), S(Down), D(right), Q(quit)\n\n");
+void display_map(char **grid, int n, player p)  {
+	system("clear");             //clear the linux terminal for the nice look
+        printf("HEALTH: %d | INTEL: %d/3\n", p.health, p.intel);
+	printf("controls : W(up) ,A(left), S(Down), D(right), Q(quit)\n\n");
 	for (int i = 0; i < n; i++) {
 	for (int j = 0; j < n; j++) {	
         printf("%c ", grid[i][j]);   //adding space after the %c bcz printing grid nice shape
@@ -77,7 +80,7 @@ int main() {
     initialize_map(grid, n);
 
                             //set the player
-    player p1 = {0, 0, '@'}; // start this top of the grid left side
+    player p1 = {0, 0, 3, 0, '@'}; // start this top of the grid left side
     grid[p1.x][p1.y] = p1.symbol;
 
     char input;
@@ -85,7 +88,7 @@ int main() {
 
     
     while (running) {
-        display_map(grid, n);
+        display_map(grid, n ,p1);
         printf("\nYour Move: ");
         scanf(" %c", &input);            
 
@@ -106,19 +109,48 @@ int main() {
         
      if (p1.x < 0 || p1.x >= n || p1.y < 0 || p1.y >= n) {
          printf("\nOut of bounds! Move rejected.\n");
+	 p1.health--;
          p1.x = old_x;        
-            p1.y = old_y;
- } else {
-                                  // Update grid
-            grid[old_x][old_y] = '.'; 
+         p1.y = old_y;
+ }     
+
+                  //  Check Wall Collision (Penalty)
+        else if (grid[p1.x][p1.y] == '#') {
+            printf("\nWALL HIT! -1 Life\n");
+            p1.health--;
+            p1.x = old_x; p1.y = old_y;
+        }
+                  // Process Valid Move Logic (Day 4 - New!)
+        else {
+            char target = grid[p1.x][p1.y];
+
+            if (target == 'I') p1.intel++;
+            else if (target == 'L') p1.health++;
+            else if (target == 'X') {
+                if (p1.intel >= 3) {
+                    display_map(grid, n, p1);
+                    printf("\nMISSION COMPLETE! You escaped with the intel!\n");
+                    running = 0;
+                } else {
+                    printf("\nNOT ENOUGH INTEL! You were caught trying to exit.\n");
+                    p1.health = 0;          // Game Over condition
+                }
+            }
+
+                   // Update Map
+            grid[old_x][old_y] = '.';
             grid[p1.x][p1.y] = p1.symbol;
-          }  
-    	
-         }
+        }
 
+                 //  Check Loss Condition
+        if (p1.health <= 0) {
+            display_map(grid, n, p1);
+            printf("\nGAME OVER: Agent Eliminated.\n");
+            running = 0;
+        }
+    }
 
-
-    
-    free_map(grid, n);
+    for (int i = 0; i < n; i++) free(grid[i]);
+    free(grid);
     return 0;
 }
