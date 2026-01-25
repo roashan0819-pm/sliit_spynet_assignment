@@ -1,0 +1,151 @@
+--- New Game Started (Grid Size: 10x10) ---
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (1, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (2, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (3, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (4, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (5, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (6, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (7, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (8, 0)
+------------------------------------
+Move: s | Health: 3 | Intel: 0/3
+Player Position: (9, 0)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (9, 1)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (9, 2)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (9, 3)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (9, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (8, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (7, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (6, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (5, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (4, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (3, 4)
+------------------------------------
+Move: w | Health: 3 | Intel: 0/3
+Player Position: (2, 4)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (2, 5)
+------------------------------------
+Move: d | Health: 3 | Intel: 0/3
+Player Position: (2, 6)
+------------------------------------
+Move: d | Health: 3 | Intel: 1/3
+Player Position: (2, 7)
+------------------------------------
+Move: d | Health: 3 | Intel: 1/3
+Player Position: (2, 8)
+------------------------------------
+Move: d | Health: 4 | Intel: 1/3
+Player Position: (2, 9)
+------------------------------------
+Move: s | Health: 4 | Intel: 1/3
+Player Position: (3, 9)
+------------------------------------
+Move: s | Health: 4 | Intel: 1/3
+Player Position: (4, 9)
+------------------------------------
+Move: s | Health: 4 | Intel: 1/3
+Player Position: (5, 9)
+------------------------------------
+Move: s | Health: 4 | Intel: 1/3
+Player Position: (6, 9)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 8)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 7)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 6)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 5)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 4)
+------------------------------------
+Move: a | Health: 4 | Intel: 1/3
+Player Position: (6, 3)
+------------------------------------
+Move: a | Health: 4 | Intel: 2/3
+Player Position: (6, 2)
+------------------------------------
+Move: a | Health: 4 | Intel: 2/3
+Player Position: (6, 1)
+------------------------------------
+Move: w | Health: 4 | Intel: 2/3
+Player Position: (5, 1)
+------------------------------------
+Move: w | Health: 4 | Intel: 2/3
+Player Position: (4, 1)
+------------------------------------
+Move: w | Health: 4 | Intel: 2/3
+Player Position: (3, 1)
+------------------------------------
+Move: w | Health: 4 | Intel: 3/3
+Player Position: (2, 1)
+------------------------------------
+Move: d | Health: 5 | Intel: 3/3
+Player Position: (2, 2)
+------------------------------------
+Move: d | Health: 5 | Intel: 3/3
+Player Position: (2, 3)
+------------------------------------
+Move: d | Health: 5 | Intel: 3/3
+Player Position: (2, 4)
+------------------------------------
+Move: d | Health: 5 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------
+Move: s | Health: 4 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------
+Move: s | Health: 3 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------
+Move: s | Health: 2 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------
+Move: s | Health: 1 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------
+Move: s | Health: 0 | Intel: 3/3
+Player Position: (2, 5)
+------------------------------------

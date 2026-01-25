@@ -61,7 +61,26 @@ void free_map(char **grid, int size) {
         free(grid[i]);
     }
     free(grid);
+}  
+
+void log_game_state(player p, char input, int n) {
+
+    FILE *log_file = fopen("gamelog.txt", "a");
+    
+    if (log_file == NULL) {
+        printf("Error: Could not open log file!\n");
+        return;
+    }
+
+                 // the player's status and their last move to the file
+    fprintf(log_file, "Move: %c | Health: %d | Intel: %d/3\n", input, p.health, p.intel);
+    fprintf(log_file, "Player Position: (%d, %d)\n", p.x, p.y);
+    fprintf(log_file, "------------------------------------\n");
+
+    
+    fclose(log_file);
 }
+
 
 int main() {
     int n;
@@ -82,6 +101,15 @@ int main() {
                             //set the player
     player p1 = {0, 0, 3, 0, '@'}; // start this top of the grid left side
     grid[p1.x][p1.y] = p1.symbol;
+
+    
+                               
+    FILE *temp = fopen("gamelog.txt", "w");
+    if(temp) {
+        fprintf(temp, "--- New Game Started (Grid Size: %dx%d) ---\n", n, n);
+        fclose(temp);
+    }
+
 
     char input;
     int running = 1;
@@ -140,7 +168,10 @@ int main() {
                    // Update Map
             grid[old_x][old_y] = '.';
             grid[p1.x][p1.y] = p1.symbol;
-        }
+           }
+           
+
+         log_game_state(p1, input, n);
 
                  //  Check Loss Condition
         if (p1.health <= 0) {
@@ -150,7 +181,11 @@ int main() {
         }
     }
 
-    for (int i = 0; i < n; i++) free(grid[i]);
+    for (int i = 0; i < n; i++)
+    {	    
+    free(grid[i]);
+    }
     free(grid);
+
     return 0;
 }
