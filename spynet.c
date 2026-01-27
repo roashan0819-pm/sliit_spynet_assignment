@@ -19,11 +19,11 @@ typedef struct {
     int active; 
 } Player;
 
-                 // used Function Prototypes 
-         void initialize_map(char **grid, int n);
-         void display_map(char **grid, int n, Player players[], int p_count, int current);
-         void log_game_state(Player p, char input);
-         void free_map(char **grid, int n);
+                 // used Function Prototypes (pointer to pointer)...
+         void initialize_map(char **grid, int n); //architech of the game    
+         void display_map(char **grid, int n, Player players[], int p_count, int current); // use for visualization..
+         void log_game_state(Player p, char input); //persistence
+         void free_map(char **grid, int n); // management
 
 int main() {
     int n, p_count;
@@ -31,11 +31,15 @@ int main() {
     
       system("clear");
       printf("--- Welcome to SpyNet: The Codebreaker Protocol ---\n");
-      printf("Enter grid size (%d-%d): ", MIN_SIZE, MAX_SIZE);
-      if (scanf("%d", &n) != 1 || n < MIN_SIZE || n > MAX_SIZE) n = 10;
+      printf("Enter grid size (%d-%d): ", MIN_SIZE, MAX_SIZE);          //  enter the size 5 to 15 ..given in the as                                                                               signment tute...
+      if (scanf("%d", &n) != 1 || n < MIN_SIZE || n > MAX_SIZE) n = 10;  // used relational and conditional operators..
 
-    printf("Enter number of players (1-3): ");
-    if (scanf("%d", &p_count) != 1 || p_count < 1 || p_count > 3) p_count = 1;
+   
+
+
+
+      printf("Enter number of players (1-3): ");           
+     if (scanf("%d", &p_count) != 1 || p_count < 1 || p_count > 3) p_count = 1;
 
                      //  Dynamic Memory Allocation setup
     char **grid = (char **)malloc(n * sizeof(char *));
@@ -86,13 +90,13 @@ int main() {
             int old_x = players[current].x;
             int old_y = players[current].y;
 
-                               // Movement Processing
+                                    // Movement Processing
             if (input == 'w' || input == 'W') players[current].x--;
             else if (input == 's' || input == 'S') players[current].x++;
             else if (input == 'a' || input == 'A') players[current].y--;
             else if (input == 'd' || input == 'D') players[current].y++;
 
-                        // Validation > Bounds, Walls, and Other Players..
+                                  // Validation > Bounds, Walls, and Other Players..
             if (players[current].x < 0 || players[current].x >= n || 
                 players[current].y < 0 || players[current].y >= n || 
                 grid[players[current].x][players[current].y] == '#' ||
