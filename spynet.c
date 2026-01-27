@@ -20,24 +20,24 @@ typedef struct {
 } Player;
 
                  // used Function Prototypes 
-void initialize_map(char **grid, int n);
-void display_map(char **grid, int n, Player players[], int p_count, int current);
-void log_game_state(Player p, char input);
-void free_map(char **grid, int n);
+         void initialize_map(char **grid, int n);
+         void display_map(char **grid, int n, Player players[], int p_count, int current);
+         void log_game_state(Player p, char input);
+         void free_map(char **grid, int n);
 
 int main() {
     int n, p_count;
 
     
-    system("clear");
-    printf("--- Welcome to SpyNet: The Codebreaker Protocol ---\n");
-    printf("Enter grid size (%d-%d): ", MIN_SIZE, MAX_SIZE);
-    if (scanf("%d", &n) != 1 || n < MIN_SIZE || n > MAX_SIZE) n = 10;
+      system("clear");
+      printf("--- Welcome to SpyNet: The Codebreaker Protocol ---\n");
+      printf("Enter grid size (%d-%d): ", MIN_SIZE, MAX_SIZE);
+      if (scanf("%d", &n) != 1 || n < MIN_SIZE || n > MAX_SIZE) n = 10;
 
     printf("Enter number of players (1-3): ");
     if (scanf("%d", &p_count) != 1 || p_count < 1 || p_count > 3) p_count = 1;
 
-                     //  Dynamic Memory Allocation
+                     //  Dynamic Memory Allocation setup
     char **grid = (char **)malloc(n * sizeof(char *));
     for (int i = 0; i < n; i++) {
         grid[i] = (char *)malloc(n * sizeof(char));
@@ -155,9 +155,9 @@ int main() {
     return 0;
 }
 
-              // Function Definitions
+    // Function Definitions
 
-void initialize_map(char **grid, int n) {    //funtion to handle the items
+    void initialize_map(char **grid, int n) {    //funtion to handle the items
     srand(time(NULL));
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++) grid[i][j] = '.';  // fill the empty spaces first

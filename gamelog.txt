@@ -1,1 +1,4 @@
 --- NEW MISSION STARTED ---
+Agent @: Action[d] Pos(0,1) HP:3 Intel:0
+Agent @: Action[d] Pos(0,2) HP:3 Intel:0
+Agent @: Action[d] Pos(0,3) HP:3 Intel:0
