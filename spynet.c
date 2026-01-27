@@ -181,22 +181,49 @@ int main() {
 
 void display_map(char **grid, int n, Player players[], int p_count, int current) {
     system("clear");
-    printf("========================================\n");
+    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
     printf("   SPYNET: THE CODEBREAKER PROTOCOL     \n");
-    printf("========================================\n");
+    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
     for(int i = 0; i < p_count; i++) {
         if(players[i].active) {
             printf("Agent %c | Lives: %d | Intel: %d/3 %s\n", 
                 players[i].symbol, players[i].health, players[i].intel, 
                 (i == current ? "<< CURRENT TURN >>" : ""));
         }
-    }
-    printf("----------------------------------------\n");
+    } 
+
+
+   // 1. Print the very TOP BORDER
+    for (int k = 0; k < n; k++) printf("+---");
+    printf("+\n");
+
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) printf("%c ", grid[i][j]);
+        // 2. Start each row with a vertical bar
+        printf("| ");
+        for (int j = 0; j < n; j++) {
+            // Print the grid character and a vertical separator
+            printf("%c | ", grid[i][j]);
+        }
         printf("\n");
+
+        // 3. Print the BOTTOM border for this specific row
+        for (int k = 0; k < n; k++) printf("+---");
+        printf("+\n");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void log_game_state(Player p, char input) {
     FILE *fptr = fopen("gamelog.txt", "a");
