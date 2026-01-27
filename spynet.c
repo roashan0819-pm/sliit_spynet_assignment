@@ -25,12 +25,12 @@ typedef struct {
          void log_game_state(Player p, char input); //persistence
          void free_map(char **grid, int n); // management
 
-int main() {
+    int main() {
     int n, p_count;
 
     
       system("clear");
-      printf("--- Welcome to SpyNet: The Codebreaker Protocol ---\n");
+
       printf("Enter grid size (%d-%d): ", MIN_SIZE, MAX_SIZE);          //  enter the size 5 to 15 ..given in the as                                                                               signment tute...
       if (scanf("%d", &n) != 1 || n < MIN_SIZE || n > MAX_SIZE) n = 10;  // used relational and conditional operators..
 
@@ -76,9 +76,10 @@ int main() {
             current = (current + 1) % p_count;
             continue;
         }
+       
+	display_map(grid, n, players, p_count, current);
 
-        display_map(grid, n, players, p_count, current);
-        printf("\nAgent %c, Enter Move (W/A/S/D) or Q to Exit: ", players[current].symbol);
+        
         
         char input;
         scanf(" %c", &input);
@@ -147,7 +148,7 @@ int main() {
         for(int i = 0; i < p_count; i++) if(players[i].active) active_count++;
         
         if (active_count == 0) {
-            printf("\n--- ALL AGENTS NEUTRALIZED. GAME OVER. ---\n");
+            
             running = 0;
         }
 
@@ -159,58 +160,62 @@ int main() {
     return 0;
 }
 
-    // Function Definitions
-
-    void initialize_map(char **grid, int n) {    //funtion to handle the items
+  
+  void initialize_map(char **grid, int n) {
     srand(time(NULL));
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++) grid[i][j] = '.';  // fill the empty spaces first
+                     // Fill with empty spaces first
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) grid[i][j] = '.';
+    }
 
-    int items = 0;                                   //place items randomly
-    while (items < 12) { 
+    int items = 0;
+                   // Places exactly = 3 intel(I), 2 lives(L), 1 extraction(X), and walls(#)
+    while (items < 8) { 
         int r = rand() % n, c = rand() % n;
-        if (grid[r][c] == '.' && !(r < 3 && c == 0)) {
-            if (items < 5) grid[r][c] = 'I';      // Intel
-            else if (items < 8) grid[r][c] = 'L'; // Lives
-            else if (items < 11) grid[r][c] = '#'; // Walls
-            else grid[r][c] = 'X';                // Extraction
+        if (grid[r][c] == '.' && !(r == 0 && c == 0)) { 
+            if (items < 3) grid[r][c] = 'I';
+            else if (items < 5) grid[r][c] = 'L';
+            else if (items < 6) grid[r][c] = 'X';
+            else grid[r][c] = '#';
             items++;
         }
     }
 }
 
 void display_map(char **grid, int n, Player players[], int p_count, int current) {
-    system("clear");
-    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
-    printf("   SPYNET: THE CODEBREAKER PROTOCOL     \n");
-    printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
-    for(int i = 0; i < p_count; i++) {
-        if(players[i].active) {
-            printf("Agent %c | Lives: %d | Intel: %d/3 %s\n", 
-                players[i].symbol, players[i].health, players[i].intel, 
-                (i == current ? "<< CURRENT TURN >>" : ""));
+    system("clear"); 
+
+    
+    for (int i = 0; i < p_count; i++) {
+        if (players[i].active) {
+            printf("Player %c | Health: %d | Intel: %d/%d\n", 
+                   players[i].symbol, players[i].health, players[i].intel, REQUIRED_INTEL);
         }
-    } 
-
-
-   // 1. Print the very TOP BORDER
-    for (int k = 0; k < n; k++) printf("+---");
-    printf("+\n");
-
-    for (int i = 0; i < n; i++) {
-        // 2. Start each row with a vertical bar
-        printf("| ");
-        for (int j = 0; j < n; j++) {
-            // Print the grid character and a vertical separator
-            printf("%c | ", grid[i][j]);
-        }
-        printf("\n");
-
-        // 3. Print the BOTTOM border for this specific row
-        for (int k = 0; k < n; k++) printf("+---");
-        printf("+\n");
     }
-}
+    printf("\nMove (W/A/S/D) or Q to quit: \n");
+
+    
+    for (int i = 0; i < n; i++) {       // set the +---+--- for grid
+        
+        for (int k = 0; k < n; k++) {
+            printf("+---");
+        }
+        printf("+\n"); 
+
+        
+        for (int j = 0; j < n; j++) {
+            printf("| %c ", grid[i][j]);
+        }
+        printf("|\n"); 
+    }
+
+    
+    for (int k = 0; k < n; k++) {
+        printf("+---");
+    }
+    printf("+\n");
+} 
+
 
 
 void log_game_state(Player p, char input) {
@@ -223,6 +228,7 @@ void log_game_state(Player p, char input) {
 }
 
 void free_map(char **grid, int n) {
-    for (int i = 0; i < n; i++) free(grid[i]);
+    for (int i = 0; i < n; i++) free(grid[i]); 
     free(grid);
-}
+} 
+
