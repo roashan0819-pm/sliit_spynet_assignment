@@ -213,18 +213,6 @@ void display_map(char **grid, int n, Player players[], int p_count, int current)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 void log_game_state(Player p, char input) {
     FILE *fptr = fopen("gamelog.txt", "a");
     if (fptr) {
